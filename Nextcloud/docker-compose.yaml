@@ -8,11 +8,11 @@ services:
             - "NCMariaDB:/var/lib/mysql"
 
         environment:
-            - ${MYSQL_ROOT_PASSWORD}
-            - ${MYSQL_RANDOM_ROOT_PASSWORD}
-            - ${MYSQL_DATABASE}
-            - ${MYSQL_USER}
-            - ${MYSQL_PASSWORD}
+            - MYSQL_ROOT_PASSWORD
+            - MYSQL_RANDOM_ROOT_PASSWORD
+            - MYSQL_DATABASE
+            - MYSQL_USER
+            - MYSQL_PASSWORD
 
         restart: "on-failure"
 
@@ -23,22 +23,22 @@ services:
           - "NCData:/var/www/html"
 
         environment:
-            - ${LETSENCRYPT_HOST}
-            - ${VIRTUAL_HOST}
-            - ${TRUSTED_PROXIES}
-            - ${OVERWRITEPROTOCOL}
-            - ${MYSQL_DATABASE}
-            - ${MYSQL_USER}
-            - ${MYSQL_PASSWORD}
-            - ${MYSQL_HOST}
-            - ${SMTP_HOST}
-            - ${SMTP_PORT}
-            - ${SMTP_NAME}
-            - ${SMTP_PASSWORD}
-            - ${MAIL_FROM_ADDRESS}
-            - ${NEXTCLOUD_TRUSTED_DOMAINS}
-            - ${NEXTCLOUD_ADMIN_USER}
-            - ${NEXTCLOUD_ADMIN_PASSWORD}
+            - LETSENCRYPT_HOST
+            - VIRTUAL_HOST
+            - TRUSTED_PROXIES
+            - OVERWRITEPROTOCOL
+            - MYSQL_DATABASE
+            - MYSQL_USER
+            - MYSQL_PASSWORD
+            - MYSQL_HOST
+            - SMTP_HOST
+            - SMTP_PORT
+            - SMTP_NAME
+            - SMTP_PASSWORD
+            - MAIL_FROM_ADDRESS
+            - NEXTCLOUD_TRUSTED_DOMAINS
+            - NEXTCLOUD_ADMIN_USER
+            - NEXTCLOUD_ADMIN_PASSWORD
 
         depends_on:
             - "NCDatabase"
