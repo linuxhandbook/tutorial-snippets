@@ -15,10 +15,11 @@ services:
             - MYSQL_PASSWORD
 
         restart: "on-failure"
+        networks: ["common"]
 
     NCFrontend:
         image: "nextcloud:21.0.0"
-        networks: ["net"]
+        networks: ["net", "common"]
         volumes: 
           - "NCData:/var/www/html"
 
