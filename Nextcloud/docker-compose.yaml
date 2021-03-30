@@ -4,6 +4,7 @@ services:
 
     NCDatabase:
         image: "mariadb:10.5.2"
+        
         volumes:
             - "NCMariaDB:/var/lib/mysql"
 
@@ -19,7 +20,7 @@ services:
 
     NCFrontend:
         image: "nextcloud:21.0.0"
-        networks: ["net", "common"]
+
         volumes: 
           - "NCData:/var/www/html"
 
@@ -43,6 +44,7 @@ services:
 
         depends_on:
             - "NCDatabase"
+        networks: ["net", "common"]
 
 volumes:
     NCMariaDB:
@@ -51,3 +53,4 @@ volumes:
 networks:
     net:
         external: true
+    common:
