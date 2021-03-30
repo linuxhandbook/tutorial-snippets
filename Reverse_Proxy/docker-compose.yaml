@@ -28,7 +28,7 @@ services:
         volumes:
             - "LCacme:/etc/acme.sh"
             - "NPvhost:/etc/nginx/vhost.d"
-            - "NPcerts:/etc/nginx/certs:ro"
+            - "NPcerts:/etc/nginx/certs"
             - "NPhtml:/usr/share/nginx/html"
             - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
