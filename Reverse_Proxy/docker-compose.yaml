@@ -1,0 +1,52 @@
+version: "3.3"
+
+services:
+
+    NginxProxy:
+        image: "jwilder/nginx-proxy:latest"
+
+        volumes:
+            - "NPhtml:/usr/share/nginx/html"
+            - "NPdhparam:/etc/nginx/dhparam"
+            - "NPvhost:/etc/nginx/vhost.d"
+            - "NPcerts:/etc/nginx/certs:ro"
+            - "/var/run/docker.sock:/tmp/docker.sock:ro"
+            - "./max_upload_size.conf:/etc/nginx/conf.d/max_upload_size.conf"
+
+        labels:
+            - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+        restart: "on-failure"
+        networks: ["net"]
+
+        ports:
+            - "80:80"
+            - "443:443"
+
+    LetsencryptCompanion:
+        image: "jrcs/letsencrypt-nginx-proxy-companion:latest"
+
+        volumes:
+            - "LCacme:/etc/acme.sh"
+            - "NPvhost:/etc/nginx/vhost.d"
+            - "NPcerts:/etc/nginx/certs:ro"
+            - "NPhtml:/usr/share/nginx/html"
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+        environment:
+            - DEFAULT_EMAIL
+
+        depends_on: ["NginxProxy"]
+        restart: "on-failure"
+        networks: ["net"]
+
+
+volumes:
+    NPhtml:
+    NPdhparam:
+    NPvhost:
+    NPcerts:
+    LCacme:
+
+networks:
+    net:
+        external: true
