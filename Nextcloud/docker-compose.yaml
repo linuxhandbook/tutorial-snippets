@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
     NCDatabase:
-        image: "mariadb:10.5.2"
+        image: "mariadb:10.5.9"
         
         volumes:
             - "NCMariaDB:/var/lib/mysql"
