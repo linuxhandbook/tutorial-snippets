@@ -20,8 +20,15 @@ services:
 
         restart: "on-failure"
         networks:
-            - net
+            - "net"
 
         ports:
             - "3000:8080"
             - "222:22"
+
+volumes:
+    GiteaData:
+
+networks:
+    net:
+        external: true
