@@ -54,3 +54,4 @@ networks:
     net:
         external: true
     common:
+        internal: true
