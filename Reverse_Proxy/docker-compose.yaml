@@ -11,7 +11,7 @@ services:
             - "NPvhost:/etc/nginx/vhost.d"
             - "NPcerts:/etc/nginx/certs:ro"
             - "/var/run/docker.sock:/tmp/docker.sock:ro"
-            - "./max_upload_size.conf:/etc/nginx/conf.d/max_upload_size.conf"
+            - "./client_max_upload_size.conf:/etc/nginx/conf.d/client_max_upload_size.conf"
 
         labels:
             - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
